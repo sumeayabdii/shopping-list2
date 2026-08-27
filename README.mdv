@@ -1,30 +1,130 @@
-# DadaSafe Dashboard
+DadaSafe Dashboard
 
-> A web-based administration and support management dashboard for the DadaSafe platform.
+A web-based administration and support management dashboard for the DadaSafe platform.
 
-## Table of Contents
+DadaSafe is a digital safety platform designed to educate young women in Kenya about digital safety, online risks, and responsible digital practices. The platform also provides a support pathway for users who have experienced cyberbullying or other technology-related challenges by connecting them with mental health and support providers.
 
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [Technology Stack](#technology-stack)
-- [Application Architecture](#application-architecture)
-- [Dashboard Architecture](#dashboard-architecture)
-- [Admin Dashboard](#admin-dashboard)
-- [Support Dashboard](#support-dashboard)
-- [Game Management](#game-management)
-- [Topic Selection](#topic-selection)
-- [AI Game Generation](#ai-game-generation)
-- [Game Preview](#game-preview)
-- [JSON Editor](#json-editor)
-- [Authentication and Authorization](#authentication-and-authorization)
-- [Backend Integration](#backend-integration)
-- [API Communication](#api-communication)
-- [Environment Variables](#environment-variables)
-- [Project Structure](#project-structure)
-- [Installation and Setup](#installation-and-setup)
-- [Running the Application](#running-the-application)
-- [Development Workflow](#development-workflow)
-- [Error Handling](#error-handling)
-- [Testing and Validation](#testing-and-validation)
-- [Deployment](#deployment)
-dorcas 
+The DadaSafe Dashboard provides the management and support infrastructure required to operate these services. It consists of two main dashboard environments: the Admin Dashboard and the Support Provider Dashboard.
+
+The Admin Dashboard is designed for administrators responsible for managing the platform, monitoring user activity, generating educational games, managing game content, and overseeing support-related information.
+
+The Support Provider Dashboard is designed for authorized support providers who manage incoming support requests. Support providers can view submitted cases, access the user's available contact information, review problem descriptions, track when requests were submitted, and update the status of support requests as they are handled.
+
+Both dashboards are implemented within the same frontend application and are separated through Next.js routing, allowing each type of authorized user to access the appropriate dashboard area while maintaining a shared application structure and codebase.
+
+
+DadaSafe Dashboard is the web-based management interface for the DadaSafe platform.
+
+The dashboard functions as the frontend management layer of the system. It provides authorized administrators and support providers with interfaces for interacting with information stored and managed by the DadaSafe backend.
+
+The frontend communicates with the backend through RESTful API endpoints. Backend services are responsible for database operations, authentication, authorization, business logic, support requests, user records, and game information, while the dashboard is responsible for presenting this information and allowing authorized users to perform supported actions.
+
+The application is divided into two main areas:
+
+DadaSafe Dashboard
+│
+├── Admin Dashboard
+│   ├── Dashboard
+│   ├── Settings
+│   ├── User Management
+│   ├── Game Management
+│   ├── AI Game Generation
+│   └── Game Preview
+│
+└── Support Dashboard
+    ├── Dashboard
+    ├── Support Requests
+    ├── Case Statistics
+    ├── Case Status Management
+    ├── Profile
+    └── Settings
+
+The two areas are combined within the same Next.js project and separated through application routing.
+
+# Key Features
+## Administration
+
+The Admin Dashboard provides administrators with tools for managing the educational and operational aspects of the DadaSafe platform.
+
+Administrative functionality includes:
+
+Administrator dashboard
+Platform activity monitoring
+User registration information
+User management
+User suspension
+User banning
+Administrative settings
+Support case statistics
+Game generation
+Game management
+Game payload management
+Game preview
+JSON payload editing
+JSON validation
+JSON formatting
+Theme selection
+Topic selection
+AI-assisted game generation
+Administrator profile functionality
+Administrator logout
+
+## Support Management
+
+The Support Provider Dashboard provides authorized support providers with tools for managing support requests submitted by users.
+
+Support functionality includes:
+
+Support dashboard
+Total support request count
+Pending request count
+In-progress request count
+Attended request count
+Support request table
+User email display
+Optional phone number display
+Problem description display
+Request submission date
+Request status updates
+Request priority management
+Search functionality
+Support profile
+Support settings
+Theme support
+Support-provider logout
+
+The terminology presented in the frontend uses:
+
+pending
+in_progress
+attended
+
+
+# Technology Stack
+## Frontend Technologies
+Technology	Purpose
+Next.js	Frontend framework, routing, application structure, and production builds
+React	Component-based user interface development
+JavaScript	Application logic
+JSX	React component markup
+Tailwind CSS	Utility-based styling and responsive layouts
+CSS	Custom dashboard styling
+Lucide React	Interface icons
+TanStack Form	Form state and form submission management
+Fetch API	Communication with REST APIs
+Next.js
+
+The dashboard is built using Next.js, which provides the main application framework and routing structure.
+
+The project uses the Next.js App Router approach to organize pages and dashboard sections.
+
+Examples of application routes include:
+
+/admin/dashboard
+/admin/settings
+/admin/control
+
+/support/dashboard
+/support/profile
+
+Routing allows both dashboards to exist inside the same project while maintaining separate navigation structures and functionality.
