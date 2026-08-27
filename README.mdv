@@ -1,0 +1,29 @@
+# DadaSafe Dashboard
+
+> A web-based administration and support management dashboard for the DadaSafe platform.
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Technology Stack](#technology-stack)
+- [Application Architecture](#application-architecture)
+- [Dashboard Architecture](#dashboard-architecture)
+- [Admin Dashboard](#admin-dashboard)
+- [Support Dashboard](#support-dashboard)
+- [Game Management](#game-management)
+- [Topic Selection](#topic-selection)
+- [AI Game Generation](#ai-game-generation)
+- [Game Preview](#game-preview)
+- [JSON Editor](#json-editor)
+- [Authentication and Authorization](#authentication-and-authorization)
+- [Backend Integration](#backend-integration)
+- [API Communication](#api-communication)
+- [Environment Variables](#environment-variables)
+- [Project Structure](#project-structure)
+- [Installation and Setup](#installation-and-setup)
+- [Running the Application](#running-the-application)
+- [Development Workflow](#development-workflow)
+- [Error Handling](#error-handling)
+- [Testing and Validation](#testing-and-validation)
+- [Deployment](#deployment)
