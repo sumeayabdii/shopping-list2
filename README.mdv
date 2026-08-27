@@ -1,25 +1,16 @@
 DadaSafe Dashboard
 
-A web-based administration and support management dashboard for the DadaSafe platform.
-
 DadaSafe is a digital safety platform designed to educate young women in Kenya about digital safety, online risks, and responsible digital practices. The platform also provides a support pathway for users who have experienced cyberbullying or other technology-related challenges by connecting them with mental health and support providers.
 
-The DadaSafe Dashboard provides the management and support infrastructure required to operate these services. It consists of two main dashboard environments: the Admin Dashboard and the Support Provider Dashboard.
+The DadaSafe Dashboard is the web-based management interface used to manage and support these services. It consists of two main dashboard environments: the Admin Dashboard and the Support Provider Dashboard. Both dashboards are built within the same frontend application and are separated using Next.js routing, allowing each authorized user type to access the tools relevant to their role.
 
-The Admin Dashboard is designed for administrators responsible for managing the platform, monitoring user activity, generating educational games, managing game content, and overseeing support-related information.
+The Admin Dashboard is designed for administrators responsible for managing the platform and its educational content. It provides access to platform statistics, user management, administrative settings, game generation, topic and theme selection, AI-assisted game creation, game previews, and JSON payload management. Administrators can also perform actions such as suspending or banning users and monitoring support-related information.
 
-The Support Provider Dashboard is designed for authorized support providers who manage incoming support requests. Support providers can view submitted cases, access the user's available contact information, review problem descriptions, track when requests were submitted, and update the status of support requests as they are handled.
+The Support Provider Dashboard is designed for authorized support providers who manage support requests submitted through the platform. Providers can view incoming requests, see the user's email and optional phone number, review the problem description, view the submission date, search through cases, and update the status and priority of requests. The dashboard uses the statuses pending, in_progress, and attended in the user interface, where attended represents the backend's resolved status.
 
-Both dashboards are implemented within the same frontend application and are separated through Next.js routing, allowing each type of authorized user to access the appropriate dashboard area while maintaining a shared application structure and codebase.
+The application is built using Next.js and React, with JavaScript/JSX used for application logic and component development. Tailwind CSS and custom CSS are used for the dashboard layouts and styling, while Lucide React provides interface icons and TanStack Form is used for form management. The frontend communicates with the DadaSafe FastAPI backend through RESTful API endpoints using the browser Fetch API. The backend handles authentication, authorization, database operations, user information, support requests, and game data, while the dashboard provides the interface through which authorized users interact with these services.
 
-
-DadaSafe Dashboard is the web-based management interface for the DadaSafe platform.
-
-The dashboard functions as the frontend management layer of the system. It provides authorized administrators and support providers with interfaces for interacting with information stored and managed by the DadaSafe backend.
-
-The frontend communicates with the backend through RESTful API endpoints. Backend services are responsible for database operations, authentication, authorization, business logic, support requests, user records, and game information, while the dashboard is responsible for presenting this information and allowing authorized users to perform supported actions.
-
-The application is divided into two main areas:
+The overall application structure can be represented as:
 
 DadaSafe Dashboard
 │
@@ -29,96 +20,21 @@ DadaSafe Dashboard
 │   ├── User Management
 │   ├── Game Management
 │   ├── AI Game Generation
-│   └── Game Preview
+│   ├── Topic Selection
+│   ├── Game Preview
+│   └── JSON Editor
 │
-└── Support Dashboard
+└── Support Provider Dashboard
     ├── Dashboard
     ├── Support Requests
     ├── Case Statistics
-    ├── Case Status Management
+    ├── Case Search
+    ├── Status Management
+    ├── Priority Management
     ├── Profile
     └── Settings
 
-The two areas are combined within the same Next.js project and separated through application routing.
-
-# Key Features
-## Administration
-
-The Admin Dashboard provides administrators with tools for managing the educational and operational aspects of the DadaSafe platform.
-
-Administrative functionality includes:
-
-Administrator dashboard
-Platform activity monitoring
-User registration information
-User management
-User suspension
-User banning
-Administrative settings
-Support case statistics
-Game generation
-Game management
-Game payload management
-Game preview
-JSON payload editing
-JSON validation
-JSON formatting
-Theme selection
-Topic selection
-AI-assisted game generation
-Administrator profile functionality
-Administrator logout
-
-## Support Management
-
-The Support Provider Dashboard provides authorized support providers with tools for managing support requests submitted by users.
-
-Support functionality includes:
-
-Support dashboard
-Total support request count
-Pending request count
-In-progress request count
-Attended request count
-Support request table
-User email display
-Optional phone number display
-Problem description display
-Request submission date
-Request status updates
-Request priority management
-Search functionality
-Support profile
-Support settings
-Theme support
-Support-provider logout
-
-The terminology presented in the frontend uses:
-
-pending
-in_progress
-attended
-
-
-# Technology Stack
-## Frontend Technologies
-Technology	Purpose
-Next.js	Frontend framework, routing, application structure, and production builds
-React	Component-based user interface development
-JavaScript	Application logic
-JSX	React component markup
-Tailwind CSS	Utility-based styling and responsive layouts
-CSS	Custom dashboard styling
-Lucide React	Interface icons
-TanStack Form	Form state and form submission management
-Fetch API	Communication with REST APIs
-Next.js
-
-The dashboard is built using Next.js, which provides the main application framework and routing structure.
-
-The project uses the Next.js App Router approach to organize pages and dashboard sections.
-
-Examples of application routes include:
+Example routes include:
 
 /admin/dashboard
 /admin/settings
@@ -127,250 +43,6 @@ Examples of application routes include:
 /support/dashboard
 /support/profile
 
-Routing allows both dashboards to exist inside the same project while maintaining separate navigation structures and functionality.
-Application Architecture
+The dashboard follows a component-based architecture, allowing individual features such as sidebars, forms, tables, game previews, topic selectors, and JSON editors to be developed and maintained independently. This structure makes the application easier to extend as additional administrative and support functionality is introduced.
 
-The DadaSafe Dashboard follows a component-based frontend architecture using Next.js and React.
-
-The application is divided into pages, reusable components, API utility modules, hooks, and dashboard-specific layouts.
-
-The main application areas are separated using Next.js routing:
-
-Admin
-/admin/dashboard
-/admin/settings
-/admin/control
-
-Support
-/support/dashboard
-/support/profile
-/support/settings
-
-Each dashboard has its own navigation and interface while sharing the same frontend project.
-
-The application communicates with the FastAPI backend through REST API requests. Components retrieve backend data, display it to users, and send updates back to the backend when an authorized action is performed.
-
-Dashboard Layout
-
-The dashboard interface uses a consistent sidebar-based layout.
-
-The sidebar provides navigation between the available sections of each dashboard. The current route is detected using Next.js routing so that the active navigation item can be visually highlighted.
-
-The main content area contains the functionality associated with the selected page.
-
-Common interface elements include:
-
-Sidebar navigation
-Dashboard cards
-Statistics
-Tables
-Forms
-Dropdown menus
-Search fields
-Status controls
-Loading states
-Error states
-Profile sections
-Action buttons
-
-The dashboard uses reusable React components to avoid duplicating interface logic across different pages.
-
-Admin Dashboard
-
-The Admin Dashboard provides administrators with centralized control over the DadaSafe platform.
-
-The dashboard allows administrators to monitor platform information and manage users and educational game content.
-
-The main administrative sections include:
-
-Dashboard
-
-Provides an overview of important platform statistics and activity.
-
-Settings
-
-Provides administrative controls for managing registered users.
-
-Administrators can:
-
-View registered users
-Select users from the database
-Ban users
-Suspend users
-Provide reasons for administrative actions
-
-These actions are submitted to the backend through API requests.
-
-Control
-
-The control area provides functionality related to managing and generating educational game content.
-
-Navigation
-
-Administrators can move between dashboard sections using the sidebar.
-
-A logout option is also provided to allow administrators to end their authenticated session.
-
-Support Provider Dashboard
-
-The Support Provider Dashboard is designed for authorized support providers who handle support requests submitted through DadaSafe.
-
-The dashboard provides an overview of support activity and allows providers to manage individual requests.
-
-The support dashboard displays:
-
-Total support requests
-Pending requests
-In-progress requests
-Attended requests
-
-Support requests are displayed in a structured table.
-
-Each request can contain:
-
-User email
-Optional phone number
-Problem description
-Submission date
-Current status
-Priority
-
-Support providers can update the status of a request as they handle it.
-
-The frontend uses the terminology:
-
-pending
-in_progress
-attended
-
-The backend represents attended using the resolved status value. The frontend therefore presents the status as attended while maintaining compatibility with the backend status representation.
-
-Support Request Management
-
-Support requests are retrieved from the backend and displayed dynamically on the Support Dashboard.
-
-The support request table provides search functionality, allowing support providers to search for cases based on their problem descriptions.
-
-Each request has a status selector that allows authorized support providers to update the request status.
-
-The frontend sends the selected status to the backend through the support request API.
-
-Support providers can also manage the priority associated with a case through the priority selector.
-
-The support request interface is designed to provide the information required for a provider to identify and follow up on a support case.
-
-Game Management
-
-The Admin Dashboard includes functionality for managing educational games used by the DadaSafe platform.
-
-Game information is retrieved from the backend and displayed through administrative interfaces.
-
-Administrators can work with:
-
-Game titles
-Game topics
-Game themes
-Game payloads
-Quiz content
-Scenario content
-Generated game content
-
-The dashboard also provides a preview interface for viewing game content before it is used by the platform.
-
-Topic Selection
-
-The game-generation interface allows administrators to select an educational theme and a related topic.
-
-Themes are mapped to predefined topics within the frontend.
-
-For example, themes can include:
-
-Location Tracking & Surveillance Countermeasures
-Image-Based Abuse & Media Violations
-Device Security & Spyware Mitigation
-Social Media & Online Platform Safety
-Legal Protections, Evidence, & Policy
-Account Security & Digital Hygiene
-
-After selecting a theme, the topic selector displays topics associated with that theme.
-
-This prevents unrelated topics from being selected for a particular educational theme.
-
-AI Game Generation
-
-The dashboard provides an interface for generating educational game content using an AI-assisted workflow.
-
-The administrator selects a theme and topic and then provides instructions through the prompt interface.
-
-The prompt component validates the input before submitting it to the game-generation process.
-
-The generated game data can then be displayed and reviewed through the dashboard.
-
-The generation workflow is designed to allow administrators to create educational content while maintaining control over the selected subject area.
-
-Game Preview
-
-The Game Preview component provides an interface for viewing generated game content in a simulated mobile-style environment.
-
-Game data is retrieved from the backend using the game identifier.
-
-The preview can display information such as:
-
-Game title
-Game topic
-Quiz content
-Scenario content
-Game session information
-
-The preview allows administrators to inspect generated content before making further changes or updates.
-
-JSON Editor
-
-The dashboard includes a JSON editor for viewing and editing game payloads.
-
-The editor converts JavaScript objects into formatted JSON for display.
-
-When editing is enabled, administrators can modify the JSON directly.
-
-The editor validates the JSON whenever the content changes.
-
-If invalid JSON is entered, an error message is displayed and the invalid payload is prevented from being treated as valid data.
-
-The editor also provides a formatting function that converts valid JSON into a readable, properly indented structure.
-
-Authentication and Authorization
-
-Authentication is handled through the DadaSafe backend.
-
-Users authenticate through the login system and receive an authentication token.
-
-The frontend stores and retrieves the token when making authenticated requests to protected backend endpoints.
-
-Administrative and support functionality is separated according to the user's authorized role.
-
-Protected backend endpoints are responsible for verifying whether the authenticated user has permission to perform a requested action.
-
-The frontend also provides logout functionality that removes the relevant authentication information and redirects the user to the login page.
-
-Backend Integration
-
-The DadaSafe Dashboard communicates with a FastAPI backend.
-
-The backend is responsible for:
-
-User authentication
-User registration
-Authorization
-Database operations
-Support requests
-User management
-Game data
-Game updates
-Administrative operations
-
-The dashboard acts as the client application that consumes these backend services.
-
-For example, the Support Dashboard retrieves support requests from the backend and displays them in the case table.
-
-When a support provider changes a case status, the frontend sends the update to the backend, where the request is validated and stored.
-
+Overall, the DadaSafe Dashboard provides a centralized, role-based web interface that connects the platform's administrators and support providers to the core DadaSafe services. By combining educational game management with support-request management, the dashboard helps ensure that both the learning and support sides of the DadaSafe platform can be managed efficiently from a single application.
